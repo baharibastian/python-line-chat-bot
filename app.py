@@ -22,7 +22,7 @@ handler = WebhookHandler(
            default=os.environ.get('LINE_CHANNEL_SECRET'))
 )
 
-self.confirm_message = [
+confirm_message = [
     {
         "type": "template",
         "altText": "this is a confirm template",
@@ -70,7 +70,7 @@ def callback():
 def handle_text_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        self.confirm_message
+        confirm_message
     )
 
 
