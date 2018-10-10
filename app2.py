@@ -134,8 +134,8 @@ def handle_text_message(event):
     elif text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
-                thumbnailImageUrl='https://1.bp.blogspot.com/-NRqCUkKHH-Q/VW6EUFzLiII/AAAAAAAAUNQ/DlcsA2ETA6k/s640/Brown%2BLINE%2Ba.jpe',
-                imageBackgroundColor='#FFFFFF',
+                thumbnail_image_url='https://1.bp.blogspot.com/-NRqCUkKHH-Q/VW6EUFzLiII/AAAAAAAAUNQ/DlcsA2ETA6k/s640/Brown%2BLINE%2Ba.jpe',
+                image_background_color='#FFFFFF',
                 text='Enjoy delicious food with a great atmoshpere at our place', title='Brown Cafe', actions=[
                 URIAction(label='Reserve', uri='https://line.me'),
                 PostbackAction(label='Call', data='ping')
