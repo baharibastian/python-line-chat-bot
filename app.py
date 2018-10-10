@@ -70,7 +70,7 @@ def callback():
 def handle_text_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        self.confirm_message)
+        self.confirm_message
     )
 
 
