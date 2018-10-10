@@ -140,7 +140,10 @@ def handle_text_message(event):
                 URIAction(label='Reserve', uri='https://line.me'),
                 PostbackAction(label='Call', data='ping')
             ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
+            CarouselColumn(
+                thumbnail_image_url='https://1.bp.blogspot.com/-NRqCUkKHH-Q/VW6EUFzLiII/AAAAAAAAUNQ/DlcsA2ETA6k/s640/Brown%2BLINE%2Ba.jpe',
+                image_background_color='#FFFFFF',
+                text='hoge2', title='fuga2', actions=[
                 PostbackAction(label='ping with text', data='ping', text='ping'),
                 MessageAction(label='Translate Rice', text='米')
             ]),
