@@ -133,7 +133,10 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
+            CarouselColumn(
+                thumbnailImageUrl='https://example.com/bot/images/item1.jpg',
+                imageBackgroundColor='#FFFFFF',
+                text='hoge1', title='fuga1', actions=[
                 URIAction(label='Go to line.me', uri='https://line.me'),
                 PostbackAction(label='ping', data='ping')
             ]),
