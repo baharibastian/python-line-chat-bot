@@ -134,11 +134,11 @@ def handle_text_message(event):
     elif text == 'carousel':
         carousel_template = CarouselTemplate(columns=[
             CarouselColumn(
-                thumbnailImageUrl='https://example.com/bot/images/item1.jpg',
+                thumbnailImageUrl='https://1.bp.blogspot.com/-NRqCUkKHH-Q/VW6EUFzLiII/AAAAAAAAUNQ/DlcsA2ETA6k/s640/Brown%2BLINE%2Ba.jpe',
                 imageBackgroundColor='#FFFFFF',
-                text='hoge1', title='fuga1', actions=[
-                URIAction(label='Go to line.me', uri='https://line.me'),
-                PostbackAction(label='ping', data='ping')
+                text='Enjoy delicious food with a great atmoshpere at our place', title='Brown Cafe', actions=[
+                URIAction(label='Reserve', uri='https://line.me'),
+                PostbackAction(label='Call', data='ping')
             ]),
             CarouselColumn(text='hoge2', title='fuga2', actions=[
                 PostbackAction(label='ping with text', data='ping', text='ping'),
