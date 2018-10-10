@@ -22,6 +22,29 @@ handler = WebhookHandler(
            default=os.environ.get('LINE_CHANNEL_SECRET'))
 )
 
+self.confirm_message = [
+    {
+        "type": "template",
+        "altText": "this is a confirm template",
+        "template": {
+            "type": "confirm",
+            "text": "Are you sure?",
+            "actions": [
+                {
+                    "type": "message",
+                    "label": "Yes",
+                    "text": "yes"
+                },
+                {
+                    "type": "message",
+                    "label": "No",
+                    "text": "no"
+                }
+            ]
+        }
+    }
+]
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -47,7 +70,7 @@ def callback():
 def handle_text_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)
+        self.confirm_message)
     )
 
 
