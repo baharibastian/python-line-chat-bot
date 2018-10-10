@@ -33,8 +33,8 @@ from linebot.models import (
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
-channel_secret = os.environ.get('LINE_CHANNEL_SECRET', None)
-channel_access_token = os.environ.get('LINE_CHANNEL_ACCESS_TOKEN', None)
+channel_secret = "ea234859d55dcb075e8c9ac7c149c8b6"
+channel_access_token = "lx71cmYXBKpACNWyEVDvHz0scaacfcNZb4ZYy8q/yVFbjFmKrtUKMEXN9bAqraVC17FHpkC2vXbyN7qToonknEqCepXpCTh5rINs9V6tc+dp9asU0IqYvSXGuUdbFJ+uBOy8Ggoz9hYOvU/o8pSKBQdB04t89/1O/w1cDnyilFU="
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
     sys.exit(1)
@@ -414,14 +414,5 @@ def handle_beacon(event):
 
 
 if __name__ == "__main__":
-    arg_parser = ArgumentParser(
-        usage='Usage: python ' + __file__ + ' [--port <port>] [--help]'
-    )
-    arg_parser.add_argument('-p', '--port', type=int, default=8000, help='port')
-    arg_parser.add_argument('-d', '--debug', default=False, help='debug')
-    options = arg_parser.parse_args()
-
-    # create tmp dir for download content
-    make_static_tmp_dir()
-
-    app.run(debug=options.debug, port=options.port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
