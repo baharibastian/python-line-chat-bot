@@ -162,7 +162,7 @@ def handle_text_message(event):
     elif text == '/guide':
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=PostbackAction(label='Cari Restauran', data='search_restaurant', text='Cari Restauran')),
+                                action=PostbackAction(label='Restauran', data='search_restaurant', text='Cari Restauran')),
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerAction(label='date',
                                                             data='date_postback',
