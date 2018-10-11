@@ -446,7 +446,7 @@ def search_restaurant(event):
                 ]
             )
         )
-    carousel_template = CarouselTemplate(columns=columns)
+    carousel_template = CarouselTemplate(columns=columns[10:])
 
     template_message = TemplateSendMessage(
         alt_text='Carousel alt text', template=carousel_template)
