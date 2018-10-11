@@ -329,11 +329,11 @@ def handle_location_message(event):
     print(event.message)
     if event.message.title is None:
         event.message.title = ""
-        
+
     line_bot_api.reply_message(
         event.reply_token,
         LocationSendMessage(
-            title=event.message.title, address[:100]=event.message.address,
+            title=event.message.title, address=event.message.address[:100],
             latitude=event.message.latitude, longitude=event.message.longitude
         )
     )
