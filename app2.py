@@ -426,7 +426,7 @@ def handle_beacon(event):
             text='Got beacon event. hwid={}, device_message(hex string)={}'.format(
                 event.beacon.hwid, event.beacon.dm)))
 
-def search_restaurant():
+def search_restaurant(event):
     lat = '-6.1648459'
     lon = '106.8230685'
     BASE_URL = "https://developers.zomato.com/api/v2.1/search?"
