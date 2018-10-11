@@ -328,7 +328,7 @@ def handle_location_message(event):
     print("lokasi")
     print(event.message)
     if event.message.title is None:
-        title = ""
+        title = "Lokasi"
     else:
         title = event.message.title
 
