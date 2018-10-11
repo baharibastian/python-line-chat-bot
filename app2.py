@@ -440,7 +440,7 @@ def search_restaurant(event):
             CarouselColumn(
                 thumbnail_image_url='https://image.flaticon.com/icons/png/512/229/229374.png',
                 image_background_color='#FFFFFF',
-                text=restauran['location']['address'], title=restauran['name'], actions=[
+                text=restauran['location']['address'][:50], title=restauran['name'], actions=[
                     URIAction(label='Cek Restoran', uri=restauran['url']),
                     PostbackAction(label='Lihat Peta', data='ping')
                 ]
