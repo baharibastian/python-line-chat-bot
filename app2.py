@@ -5,7 +5,6 @@ import os
 import sys
 import tempfile
 import requests
-import geocoder
 import json
 from argparse import ArgumentParser
 
@@ -428,9 +427,8 @@ def handle_beacon(event):
                 event.beacon.hwid, event.beacon.dm)))
 
 def search_restaurant():
-    g = geocoder.ip('me')
-    lat = g.latlng[0]
-    lon = g.latlng[1]
+    lat = '-6.1648459'
+    lon = '106.8230685'
     BASE_URL = "https://developers.zomato.com/api/v2.1/search?"
     req = requests.get(BASE_URL+'lat='+str(lat)+'&lon='+str(long), headers={"user-key":"02e0e7ef3a3f6767835c22d029322fe7"})
     response = json.loads(req.text)
