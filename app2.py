@@ -325,6 +325,7 @@ def handle_text_message(event):
 
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
+    print("lokasi"+event.message)
     line_bot_api.reply_message(
         event.reply_token,
         LocationSendMessage(
