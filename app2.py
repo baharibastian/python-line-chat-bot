@@ -440,7 +440,7 @@ def search_restaurant():
         restauran = data['restaurant']
         columns.append(
             CarouselColumn(
-                thumbnail_image_url='https://image.flaticon.com/icons/png/512/229/229374.png'
+                thumbnail_image_url='https://image.flaticon.com/icons/png/512/229/229374.png',
                 image_background_color='#FFFFFF',
                 text=restauran['location']['address'], title=restauran['name'], actions=[
                     URIAction(label='Cek Restoran', uri=restauran['url']),
@@ -449,7 +449,7 @@ def search_restaurant():
             )
         )
     carousel_template = CarouselTemplate(columns=columns)
-    
+
     template_message = TemplateSendMessage(
         alt_text='Carousel alt text', template=carousel_template)
     line_bot_api.reply_message(event.reply_token, template_message)
