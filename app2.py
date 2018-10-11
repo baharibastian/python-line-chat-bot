@@ -306,6 +306,18 @@ def handle_text_message(event):
                             action=LocationAction(label="label6")
                         ),
                     ])))
+    elif text == 'lokasi':
+        line_bot_api.reply_message(
+            event.reply_token,
+            LocationMessage(
+                text='Lokasi Kamu',
+                title='Lokasi Kamu',
+                type='location',
+                address='Pasaraya Blok M Gedung B Lt. 6, Jalan Iskandarsyah II No.7',
+                latitude='-6.2439966',
+                longitude='106.8033883'
+            )
+        )
     else:
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text))
