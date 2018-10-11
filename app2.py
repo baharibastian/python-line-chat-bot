@@ -430,7 +430,7 @@ def search_restaurant():
     lat = '-6.1648459'
     lon = '106.8230685'
     BASE_URL = "https://developers.zomato.com/api/v2.1/search?"
-    req = requests.get(BASE_URL+'lat='+str(lat)+'&lon='+str(long), headers={"user-key":"02e0e7ef3a3f6767835c22d029322fe7"})
+    req = requests.get(BASE_URL+'lat='+str(lat)+'&lon='+str(lon), headers={"user-key":"02e0e7ef3a3f6767835c22d029322fe7"})
     response = json.loads(req.text)
     restaurants = response['restaurants']
     columns = []
