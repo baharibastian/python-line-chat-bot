@@ -99,6 +99,12 @@ def handle_text_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
+    if text == 'how':
+        how = 'Available Commands \n /guide \n'
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=how)
+        )
     elif text == 'bye':
         if isinstance(event.source, SourceGroup):
             line_bot_api.reply_message(
