@@ -328,6 +328,7 @@ def handle_location_message(event):
     print("lokasi")
     print(event.message)
     if event.message.title is None:
+        print("tidak ada")
         event.message.title = ""
 
     line_bot_api.reply_message(
