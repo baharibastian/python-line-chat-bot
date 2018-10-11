@@ -4,6 +4,9 @@ import errno
 import os
 import sys
 import tempfile
+import requests
+import geocoder
+import json
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -100,7 +103,7 @@ def handle_text_message(event):
                 event.reply_token,
                 TextSendMessage(text="Bot can't use profile API without user ID"))
     if text == 'how':
-        how = 'Available Commands \n /guide \n'
+        how = 'Available Commands \n /guide'
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=how)
@@ -157,12 +160,10 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(
             alt_text='Carousel alt text', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    elif text == 'image_carousel':
+    elif text == '/guide':
         image_carousel_template = ImageCarouselTemplate(columns=[
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
-                                action=DatetimePickerAction(label='datetime',
-                                                            data='datetime_postback',
-                                                            mode='datetime')),
+                                action=PostbackAction(label='Cari Restauran', data='search_restaurant', text='Cari Restauran')),
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerAction(label='date',
                                                             data='date_postback',
@@ -414,6 +415,8 @@ def handle_postback(event):
     elif event.postback.data == 'date_postback':
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.postback.params['date']))
+    elif event.postback.data == 'search_restaurant':
+        search_restaurant
 
 
 @handler.add(BeaconEvent)
@@ -424,6 +427,32 @@ def handle_beacon(event):
             text='Got beacon event. hwid={}, device_message(hex string)={}'.format(
                 event.beacon.hwid, event.beacon.dm)))
 
+def search_restaurant():
+    g = geocoder.ip('me')
+    lat = g.latlng[0]
+    lon = g.latlng[1]
+    BASE_URL = "https://developers.zomato.com/api/v2.1/search?"
+    req = requests.get(BASE_URL+'lat='+str(lat)+'&lon='+str(long), headers={"user-key":"02e0e7ef3a3f6767835c22d029322fe7"})
+    response = json.loads(req.text)
+    restaurants = response['restaurants']
+    columns = []
+    for data in restaurants:
+        restauran = data['restaurant']
+        columns.append(
+            CarouselColumn(
+                thumbnail_image_url='https://image.flaticon.com/icons/png/512/229/229374.png'
+                image_background_color='#FFFFFF',
+                text=restauran['location']['address'], title=restauran['name'], actions=[
+                    URIAction(label='Cek Restoran', uri=restauran['url']),
+                    PostbackAction(label='Lihat Peta', data='ping')
+                ]
+            )
+        )
+    carousel_template = CarouselTemplate(columns=columns)
+    
+    template_message = TemplateSendMessage(
+        alt_text='Carousel alt text', template=carousel_template)
+    line_bot_api.reply_message(event.reply_token, template_message)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
