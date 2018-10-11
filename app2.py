@@ -328,13 +328,14 @@ def handle_location_message(event):
     print("lokasi")
     print(event.message)
     if event.message.title is None:
-        print("tidak ada")
-        event.message.title = ""
+        title = ""
+    else:
+        title = event.message.title
 
     line_bot_api.reply_message(
         event.reply_token,
         LocationSendMessage(
-            title=event.message.title, address=event.message.address[:100],
+            title=title, address=event.message.address[:100],
             latitude=event.message.latitude, longitude=event.message.longitude
         )
     )
