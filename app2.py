@@ -161,7 +161,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == '/guide':
         image_carousel_template = ImageCarouselTemplate(columns=[
-            ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
+            ImageCarouselColumn(image_url='https://image.flaticon.com/icons/png/512/229/229374.png',
                                 action=PostbackAction(label='Restauran', data='search_restaurant', text='Cari Restauran')),
             ImageCarouselColumn(image_url='https://via.placeholder.com/1024x1024',
                                 action=DatetimePickerAction(label='date',
